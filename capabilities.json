@@ -1,17 +1,11 @@
 {
-    "dataRoles": [
-        {
-            "displayName": "Mearsure Data",
-            "name": "measure",
-            "kind": "Measure"
-        }
-    ],
     "objects": {
         "buttonSettings": {
             "displayName": "Button Setting",
             "properties": {
                 "backgroundColor": {
                     "displayName": "Background Color",
+                    "description": "Set the background color of the search button",
                     "type": {
                         "fill": {
                             "solid": {
@@ -22,8 +16,52 @@
                 },
                 "fontSize": {
                     "displayName": "Font Size",
+                    "description": "Set the font size of the button text",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "buttonWidth": {
+                    "displayName": "Button Width",
+                    "description": "Set the width of the search button",
                     "type": {
                         "numeric": true
+                    }
+                },
+                "buttonHeight": {
+                    "displayName": "Button Height",
+                    "description": "Set the height of the search button",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "marginTop": {
+                    "displayName": "Margin Top",
+                    "description": "Set the margin top of the search button",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "marginLeft": {
+                    "displayName": "Margin Left",
+                    "description": "Set the distance between the text input and this search button",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "borderRadius": {
+                    "displayName": "Border Radius",
+                    "description": "Set the border radius of the search button",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
                     }
                 }
             }

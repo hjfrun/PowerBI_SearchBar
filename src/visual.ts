@@ -86,6 +86,12 @@ export class Visual implements IVisual {
 
         this.search_button.style.backgroundColor = this.settings.buttonSettings.backgroundColor;
         this.search_button.style.fontSize = `${this.settings.buttonSettings.fontSize}px`;
+        this.search_button.style.width = `${this.settings.buttonSettings.buttonWidth}px`;
+        this.search_button.style.height = `${this.settings.buttonSettings.buttonHeight}px`;
+        this.search_button.style.marginLeft = `${this.settings.buttonSettings.marginLeft}px`;
+        this.search_button.style.marginTop = `${this.settings.buttonSettings.marginTop}px`;
+        this.search_button.style.borderRadius = `${this.settings.buttonSettings.borderRadius}px`;
+        
     }
 
     private static parseSettings(dataView: DataView): VisualSettings {
