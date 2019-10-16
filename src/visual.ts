@@ -1,28 +1,3 @@
-/*
-*  Power BI Visual CLI
-*
-*  Copyright (c) Microsoft Corporation
-*  All rights reserved.
-*  MIT License
-*
-*  Permission is hereby granted, free of charge, to any person obtaining a copy
-*  of this software and associated documentation files (the ""Software""), to deal
-*  in the Software without restriction, including without limitation the rights
-*  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*  copies of the Software, and to permit persons to whom the Software is
-*  furnished to do so, subject to the following conditions:
-*
-*  The above copyright notice and this permission notice shall be included in
-*  all copies or substantial portions of the Software.
-*
-*  THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-*  THE SOFTWARE.
-*/
 "use strict";
 
 import "core-js/stable";
@@ -39,31 +14,48 @@ import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnume
 import { VisualSettings } from "./settings";
 export class Visual implements IVisual {
     private target: HTMLElement;
-    private updateCount: number;
     private settings: VisualSettings;
-    private textNode: Text;
 
     constructor(options: VisualConstructorOptions) {
         console.log('Visual constructor', options);
         this.target = options.element;
-        this.updateCount = 0;
         if (document) {
-            const new_p: HTMLElement = document.createElement("p");
-            new_p.appendChild(document.createTextNode("Update count:"));
-            const new_em: HTMLElement = document.createElement("em");
-            this.textNode = document.createTextNode(this.updateCount.toString());
-            new_em.appendChild(this.textNode);
-            new_p.appendChild(new_em);
-            this.target.appendChild(new_p);
+            // add outer div
+            const outer_div: HTMLElement = document.createElement("div");
+            outer_div.setAttribute("id", "outer");
+
+            // create the input
+            const keyword_input: HTMLElement = document.createElement("input");
+            keyword_input.setAttribute("type", "text");
+            keyword_input.setAttribute("placeholder", "Searching keyword...");
+            keyword_input.setAttribute("name", "keyword");
+            keyword_input.setAttribute("id", "keyword-input");
+
+            // add the text input
+            outer_div.appendChild(keyword_input);
+
+            // create the search button
+            const search_button: HTMLElement = document.createElement("button");
+            search_button.appendChild(document.createTextNode("Search"));
+            search_button.setAttribute("type", "button");
+            search_button.addEventListener("click", () => {
+                var keyword = (<HTMLInputElement>document.getElementById("keyword-input")).value;
+                var url = "http://www.google.com/search?q=" + keyword;
+                console.log('url: ', url);
+                options.host.launchUrl(url);
+            })
+            
+            // add the search button
+            outer_div.appendChild(search_button);
+
+            // add outer div to window
+            this.target.appendChild(outer_div);
         }
     }
 
     public update(options: VisualUpdateOptions) {
-        this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
         console.log('Visual update', options);
-        if (this.textNode) {
-            this.textNode.textContent = (this.updateCount++).toString();
-        }
+        
     }
 
     private static parseSettings(dataView: DataView): VisualSettings {
