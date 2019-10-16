@@ -1,11 +1,36 @@
 {
     "objects": {
+        "textInputSettings": {
+            "displayName": "Text Input Setting",
+            "properties": {
+                "fontSize": {
+                    "displayName": "Font Size",
+                    "description": "Set the font size of the text input",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        },
         "buttonSettings": {
             "displayName": "Button Setting",
             "properties": {
                 "backgroundColor": {
                     "displayName": "Background Color",
                     "description": "Set the background color of the search button",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "textColor": {
+                    "displayName": "Text Color",
+                    "description": "Set the text color of the search button",
                     "type": {
                         "fill": {
                             "solid": {

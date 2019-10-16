@@ -84,6 +84,12 @@ export class Visual implements IVisual {
         this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
         console.log('bg color: ', this.settings.buttonSettings.backgroundColor);
 
+        // set the text input style
+        this.keyword_input.style.fontSize = `${this.settings.textInputSettings.fontSize}px`;
+        
+
+        // set the button style
+        this.search_button.style.color = this.settings.buttonSettings.textColor;
         this.search_button.style.backgroundColor = this.settings.buttonSettings.backgroundColor;
         this.search_button.style.fontSize = `${this.settings.buttonSettings.fontSize}px`;
         this.search_button.style.width = `${this.settings.buttonSettings.buttonWidth}px`;
@@ -91,7 +97,7 @@ export class Visual implements IVisual {
         this.search_button.style.marginLeft = `${this.settings.buttonSettings.marginLeft}px`;
         this.search_button.style.marginTop = `${this.settings.buttonSettings.marginTop}px`;
         this.search_button.style.borderRadius = `${this.settings.buttonSettings.borderRadius}px`;
-        
+
     }
 
     private static parseSettings(dataView: DataView): VisualSettings {
