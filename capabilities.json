@@ -11,6 +11,14 @@
                             "fontSize": true
                         }
                     }
+                },
+                "baseUrl": {
+                    "displayName": "Base URL",
+                    "description": "Set the base url for the page for the browser to open",
+                    "type": {
+                        "text": true
+                    },
+                    "suppressFormatPainterCopy": true
                 }
             }
         },

@@ -19,6 +19,7 @@ export class Visual implements IVisual {
     private keyword_input: HTMLElement;
     private search_button: HTMLElement;
     private outer_div: HTMLElement;
+    private search_base_url: string;
 
     constructor(options: VisualConstructorOptions) {
         console.log('Visual constructor', options);
@@ -43,7 +44,8 @@ export class Visual implements IVisual {
             this.search_button.appendChild(document.createTextNode("Search"));
             this.search_button.addEventListener("click", () => {
                 var keyword = (<HTMLInputElement>document.getElementById("keyword-input")).value;
-                var url = "http://www.google.com/search?q=" + keyword;
+                // var url = "http://www.google.com/search?q=" + keyword;
+                var url = this.search_base_url + keyword;
                 console.log('url: ', url);
                 options.host.launchUrl(url);
             })
@@ -93,6 +95,7 @@ export class Visual implements IVisual {
 
         // set the text input style
         this.keyword_input.style.fontSize = `${this.settings.textInputSettings.fontSize}px`;
+        this.search_base_url = this.settings.textInputSettings.baseUrl;
         
 
         // set the button style
