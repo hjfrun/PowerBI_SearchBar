@@ -29,10 +29,17 @@ export class Visual implements IVisual {
             this.keyword_input.setAttribute("type", "text");
             this.keyword_input.setAttribute("placeholder", "Search keyword...");
             this.keyword_input.setAttribute("id", "keyword-input");
+            this.keyword_input.addEventListener("keyup", (e) => {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    document.getElementById("search-button").click();
+                }
+            });
             this.outer_div.appendChild(this.keyword_input);
 
             this.search_button = document.createElement("button");
             this.search_button.setAttribute("type", "button");
+            this.search_button.setAttribute("id", "search-button");
             this.search_button.appendChild(document.createTextNode("Search"));
             this.search_button.addEventListener("click", () => {
                 var keyword = (<HTMLInputElement>document.getElementById("keyword-input")).value;
