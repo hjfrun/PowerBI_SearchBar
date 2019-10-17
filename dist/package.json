@@ -8,7 +8,7 @@
             "file": "resources/powerBISearchBar87E51691F10B40F38420732E413ECF15.pbiviz.json"
         }
     ],
-    "visual": {"name":"powerBISearchBar","displayName":"PowerBI_SearchBar","guid":"powerBISearchBar87E51691F10B40F38420732E413ECF15","visualClassName":"Visual","version":"1.0.0","description":"search bar, click to search","supportUrl":"no support, sorry","gitHubUrl":""},
+    "visual": {"name":"powerBISearchBar","displayName":"Search Bar","guid":"powerBISearchBar87E51691F10B40F38420732E413ECF15","visualClassName":"Visual","version":"1.0.0","description":"search bar, click to search","supportUrl":"no support, sorry","gitHubUrl":""},
     "metadata": {
         "pbivizjson": {
             "resourceId": "rId0"

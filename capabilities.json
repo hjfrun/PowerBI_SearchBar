@@ -1,4 +1,11 @@
 {
+    "dataRoles": [
+        {
+            "displayName": "Dummy Measure",
+            "name": "measure",
+            "kind": "Measure"
+        }
+    ],
     "objects": {
         "textInputSettings": {
             "displayName": "Text Input Setting",
