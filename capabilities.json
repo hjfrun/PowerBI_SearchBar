@@ -1,9 +1,14 @@
 {
     "dataRoles": [
         {
-            "displayName": "Dummy Measure",
-            "name": "measure",
-            "kind": "Measure"
+            "displayName": "Market Group",
+            "name": "Market",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Year Group",
+            "name": "Year",
+            "kind": "Grouping"
         }
     ],
     "objects": {
@@ -109,20 +114,27 @@
     },
     "dataViewMappings": [
         {
+            "conditions": [
+                {
+                    "Market":{
+                        "max": 1
+                    },
+                    "Year": {
+                        "max": 1
+                    }
+                }
+            ],
             "categorical": {
                 "categories": {
-                    "for": {
-                        "in": "category"
-                    },
-                    "dataReductionAlgorithm": {
-                        "top": {}
-                    }
-                },
-                "values": {
                     "select": [
                         {
-                            "bind": {
-                                "to": "measure"
+                            "for": {
+                                "in": "Market"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Year"
                             }
                         }
                     ]

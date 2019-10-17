@@ -91,7 +91,7 @@ export class Visual implements IVisual {
     public update(options: VisualUpdateOptions) {
         console.log('Visual update', options);
         this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
-        console.log('bg color: ', this.settings.buttonSettings.backgroundColor);
+        // console.log('bg color: ', this.settings.buttonSettings.backgroundColor);
 
         // set the text input style
         this.keyword_input.style.fontSize = `${this.settings.textInputSettings.fontSize}px`;
