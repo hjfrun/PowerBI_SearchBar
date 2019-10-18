@@ -4,11 +4,6 @@
             "displayName": "Market Group",
             "name": "Market",
             "kind": "Grouping"
-        },
-        {
-            "displayName": "Year Group",
-            "name": "Year",
-            "kind": "Grouping"
         }
     ],
     "objects": {
@@ -118,9 +113,6 @@
                 {
                     "Market":{
                         "max": 1
-                    },
-                    "Year": {
-                        "max": 1
                     }
                 }
             ],
@@ -130,11 +122,6 @@
                         {
                             "for": {
                                 "in": "Market"
-                            }
-                        },
-                        {
-                            "for": {
-                                "in": "Year"
                             }
                         }
                     ]

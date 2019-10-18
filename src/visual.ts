@@ -20,6 +20,7 @@ export class Visual implements IVisual {
     private search_button: HTMLElement;
     private outer_div: HTMLElement;
     private search_base_url: string;
+    private marketString: string;
 
     constructor(options: VisualConstructorOptions) {
         console.log('Visual constructor', options);
@@ -44,54 +45,19 @@ export class Visual implements IVisual {
             this.search_button.appendChild(document.createTextNode("Search"));
             this.search_button.addEventListener("click", () => {
                 var keyword = (<HTMLInputElement>document.getElementById("keyword-input")).value;
-                // var url = "http://www.google.com/search?q=" + keyword;
-                var url = this.search_base_url + keyword;
+                var url = this.search_base_url + '/#/search?keywords=' + keyword + '&market=' + this.marketString;
                 console.log('url: ', url);
                 options.host.launchUrl(url);
             })
             this.outer_div.appendChild(this.search_button);
             this.target.appendChild(this.outer_div);
-
-            /*
-            // add outer div
-            const outer_div: HTMLElement = document.createElement("div");
-            outer_div.setAttribute("id", "outer");
-
-            // create the input
-            const keyword_input: HTMLElement = document.createElement("input");
-            keyword_input.setAttribute("type", "text");
-            keyword_input.setAttribute("placeholder", "Searching keyword...");
-            keyword_input.setAttribute("name", "keyword");
-            keyword_input.setAttribute("id", "keyword-input");
-
-            // add the text input
-            outer_div.appendChild(keyword_input);
-
-            // create the search button
-            const search_button: HTMLElement = document.createElement("button");
-            this.search_button = search_button;
-            search_button.appendChild(document.createTextNode("Search"));
-            search_button.setAttribute("type", "button");
-            search_button.addEventListener("click", () => {
-                var keyword = (<HTMLInputElement>document.getElementById("keyword-input")).value;
-                var url = "http://www.google.com/search?q=" + keyword;
-                console.log('url: ', url);
-                options.host.launchUrl(url);
-            })
-            
-            // add the search button
-            outer_div.appendChild(search_button);
-
-            // add outer div to window
-            this.target.appendChild(outer_div);
-            */
         }
     }
 
     public update(options: VisualUpdateOptions) {
         console.log('Visual update', options);
         this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
-        // console.log('bg color: ', this.settings.buttonSettings.backgroundColor);
+        this.marketString = this.parseMarketSelections(options && options.dataViews && options.dataViews[0]);
 
         // set the text input style
         this.keyword_input.style.fontSize = `${this.settings.textInputSettings.fontSize}px`;
@@ -109,6 +75,14 @@ export class Visual implements IVisual {
         this.search_button.style.borderRadius = `${this.settings.buttonSettings.borderRadius}px`;
 
     }
+
+    private parseMarketSelections(dataView: DataView): string {
+        var markets = dataView.categorical.categories[0].values;
+        var marketString = markets.join(',').replace(/ /g, '%20');
+
+        return marketString;
+    }
+
 
     private static parseSettings(dataView: DataView): VisualSettings {
         return <VisualSettings>VisualSettings.parse(dataView);
