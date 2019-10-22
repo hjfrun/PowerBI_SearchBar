@@ -58,11 +58,11 @@ export class Visual implements IVisual {
         console.log('Visual update', options);
         this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
         this.marketString = this.parseMarketSelections(options && options.dataViews && options.dataViews[0]);
-
+    
         // set the text input style
         this.keyword_input.style.fontSize = `${this.settings.textInputSettings.fontSize}px`;
         this.search_base_url = this.settings.textInputSettings.baseUrl;
-        
+        this.keyword_input.style.width = `${this.settings.textInputSettings.textInputWidth}%`;
 
         // set the button style
         this.search_button.style.color = this.settings.buttonSettings.textColor;

@@ -6,6 +6,7 @@ import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 export class TextInputSettings {
   public fontSize: number = 25;
   public baseUrl: string = "http://localhost:9528";
+  public textInputWidth: number = 80;
 }
 
 export class ButtonSettings {

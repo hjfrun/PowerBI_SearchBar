@@ -19,6 +19,15 @@
                         }
                     }
                 },
+                "textInputWidth": {
+                    "displayName": "Width of the text input",
+                    "description": "Set the text input width",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
                 "baseUrl": {
                     "displayName": "Base URL",
                     "description": "Set the base url for the page for the browser to open",
